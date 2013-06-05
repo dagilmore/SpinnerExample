@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.4'
+        classpath 'com.manymo:gradle:1.0'
+    }
+}
+apply plugin: 'android'
+apply plugin: 'manymo'
+
+dependencies {
+    compile files('libs/android-support-v4.jar')
+}
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 3
+        targetSdkVersion 11
+    }
+}
+
+manymo {
+    // list of device to test on. Not providing devices will test on all
+    // available devices available on manymo.com that are compatible with
+    // the app (based on minSdkVersion)
+    devices "17_WXGA800-7in_x86", "17_WXGA720_x86"
+
+    timeOut 60
+}
